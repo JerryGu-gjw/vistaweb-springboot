@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/lab_info
+    username: root
+    password: vistalab
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  devtools:
+    restart:
+      enable: true
+      additional-paths: src/main/java
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  web:
+    resources:
+      static-locations: /upload/
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: lab.vista.vistaweb.entity
+server:
+  port: 8181
