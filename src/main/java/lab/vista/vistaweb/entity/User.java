@@ -6,6 +6,7 @@ public class User {
     public String uPassword;
     public String uEmail;
     public String uRegisterTime;
+    
     public int getuId() {
         return uId;
     }

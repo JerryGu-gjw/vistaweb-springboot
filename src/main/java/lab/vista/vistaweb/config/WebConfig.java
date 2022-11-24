@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import lab.vista.vistaweb.intercepter.LoginIntercepter;
+import lab.vista.vistaweb.intercepter.AuthInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -14,15 +14,18 @@ public class WebConfig implements WebMvcConfigurer{
     
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/login/**");
+      registry.addInterceptor(new AuthInterceptor())
+      .addPathPatterns("/**")
+      .excludePathPatterns("/user/login", "/user/register", "/imserver/**", "/files/**", "/alipay/**",
+              "/doc.html", "/webjars/**", "/swagger-resources/**");
     }
 
     @Override
-public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("swagger-ui.html")
-      .addResourceLocations("classpath:/META-INF/resources/");
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+          .addResourceLocations("classpath:/META-INF/resources/");
 
-    registry.addResourceHandler("/webjars/**")
-      .addResourceLocations("classpath:/META-INF/resources/webjars/");
-}
+        registry.addResourceHandler("/webjars/**")
+          .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
 }

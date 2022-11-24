@@ -10,5 +10,4 @@ public class VistawebApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VistawebApplication.class, args);
 		}
-
 }
