@@ -38,11 +38,9 @@ public class WebSocketServer {
         for (Object key : sessionMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.set("username", key);
-            // {"username", "zhang", "username": "admin"}
             array.add(jsonObject);
         }
-//        {"users": [{"username": "zhang"},{ "username": "admin"}]}
-        sendAllMessage(JSONUtil.toJsonStr(result));  // 后台发送消息给所有的客户端
+        sendAllMessage(JSONUtil.toJsonStr(result));
     }
 
     /**
@@ -58,11 +56,9 @@ public class WebSocketServer {
         for (Object key : sessionMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.set("username", key);
-            // {"username", "zhang", "username": "admin"}
             array.add(jsonObject);
         }
-//        {"users": [{"username": "zhang"},{ "username": "admin"}]}
-        sendAllMessage(JSONUtil.toJsonStr(result));  // 后台发送消息给所有的客户端
+        sendAllMessage(JSONUtil.toJsonStr(result));
     }
 
     /**
@@ -79,10 +75,9 @@ public class WebSocketServer {
             return;
         }
         log.info("服务端收到用户username={}的消息:{}", username, message);
-        String toUsername = obj.getStr("to"); // to表示发送给哪个用户，比如 admin
-        String text = obj.getStr("text"); // 发送的消息文本  hello
-        // {"to": "admin", "text": "聊天文本"}
-        Session toSession = sessionMap.get(toUsername); // 根据 to用户名来获取 session，再通过session发送消息文本
+        String toUsername = obj.getStr("to");
+        String text = obj.getStr("text");
+        Session toSession = sessionMap.get(toUsername);
         if (toSession != null) {
             // 服务器端 再把消息组装一下，组装后的消息包含发送人和发送的文本内容
             // {"from": "zhang", "text": "hello"}

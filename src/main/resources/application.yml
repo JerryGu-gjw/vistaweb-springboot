@@ -1,7 +1,7 @@
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/lab_info
+    url: jdbc:mysql://localhost:3306/lab
     username: root
     password: vistalab
     driver-class-name: com.mysql.cj.jdbc.Driver
